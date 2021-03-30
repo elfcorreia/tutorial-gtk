@@ -19,20 +19,21 @@ int main(int argc, char *argv[]) {
 	return 0;
 }
 ```
-Para compilar essa aplicação usaremos o compilador de C++ disponibilizado no GCC.
+Para compilar essa aplicação usaremos o g++ e precisamos incluir as bibliotecas do GTK. Como são muitas, vamos usar o comando `pkg-config` para nos ajudar.
 
+Este comando imprime as **opções para compilação** de códigos com GTK
 
-
-Para compilar devemos incluir as bibliotecas do GTK:
-
-Este comando imprime as opções para a compilação de códigos com GTK
-
+```bash
 $ pkg-config --cflags gtk+-3.0
+```
+Este outro comando imprime as **opções para ligação** de executáveis com GTK
 
-Este outro comando imprime as opções para ligação de executáveis com GTK
-
+```bash
 $ pkg-config --libs gtk+-3.0
+```
 
 Compile o seu programa dessa forma, usando os comandos anteriores:
 
-$ g++ $(pkg-config --cflags gtk+-3.0) main.cpp -o main $(pkg-config --libs gtk+-3.0)
+```
+$ g++ $(pkg-config --cflags gtk+-3.0) main.cpp $(pkg-config --libs gtk+-3.0) -o main
+```
